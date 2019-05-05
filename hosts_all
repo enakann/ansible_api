@@ -1,0 +1,6 @@
+[navihosts]
+rabbitmq-2 ansible_host=192.168.2.5 ansible_user=navi ansible_password=navi
+#diyvb2 ansible_host=192.168.2.3 ansible_user=navi ansible_password=navi
+
+[remote]
+rabbitmq-2

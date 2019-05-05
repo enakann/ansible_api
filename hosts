@@ -1,0 +1,8 @@
+[control]
+server1.example.com ansible_connection=local
+
+[ubuntu]
+rabbitmq-2 
+
+[centos]
+diyvb2

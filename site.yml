@@ -1,0 +1,17 @@
+- name: dummy
+  hosts: juniper_srx
+  gather_facts: no
+  tasks:
+    - name: return motd to registered var
+      command: "{{ (configs)[inventory_hostname].cmd }}"
+      register: mymotd
+    
+    
+    - debug:
+        var : mymotd
+
+#    - name: debug variables
+#      debug:
+#        msg:
+#          - "{{inventory_hostname}}"
+#          - "{{configs}}"
