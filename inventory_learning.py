@@ -221,13 +221,13 @@ hosts_list={
     "juniper_srx": {
                     "hosts": [
                         "rabbitmq-2",
-                        "server1.example.com"
+                        "diyvb2"
                     ]
                 }
             }
 
 
-configs={"host1":
+"""configs={"host1":
                {"adress_book":[
                      "address_book-1 creation command 1",
                      "address_book-2 creation command"
@@ -245,13 +245,13 @@ configs={"host1":
                      ]
                   ]
                }
-            }
+            }"""
 
 
 configs={"rabbitmq-2":
              {"cmd":"ls"},
-          "server1.example.com":
-             {"cmd":"ls -lrth"}
+          "diyvb2":
+             {"cmd":"ls"}
         }
 
 #import pdb;pdb.set_trace()
@@ -259,9 +259,13 @@ pb = Playbook(hosts_list)
 pb.run_playbook("site.yml", {"configs": configs})
 data = pb.get_playbook_result()
 print(data)
+print("\n\n\n")
+
 # data['ok']['rabbitmq-2'][3]._result
 for k,v in data.items():
     for k1,v1 in v.items():
         for item in v1:
-            print(item._result)
-            print
+           if 'stdout_lines' in item._result:
+               print(k1)
+               print(item._result['stdout_lines'])
+               print
